@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Toggle and Summarize</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      width: 400px; /* Set a wider width for the popup */
+    }
+
+    .logo-container {
+      margin-bottom: 20px;
+      text-align: center; /* Center the logo */
+    }
+
+    .logo-container img {
+      max-width: 150px; /* Increased the size of the logo */
+      height: auto;
+    }
+
+    h3, h4 {
+      margin-bottom: 20px;
+    }
+
+    .toggle-label, .slider-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px; /* More space between elements */
+    }
+
+    .toggle-label span, .slider-container span {
+      flex: 1;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px; /* Increased switch width */
+      height: 28px; /* Increased switch height */
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 28px; /* Adjusted to match larger switch size */
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 24px; /* Adjusted size of the switch toggle */
+      width: 24px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(30px); /* Adjusted for wider switch */
+    }
+
+    input[type="range"] {
+      width: 250px; /* Increased the width of sliders */
+    }
+
+    select {
+      width: 270px; /* Increased the width of the dropdown */
+    }
+
+    .summary-title {
+      margin-top: 30px;
+    }
+
+    .summary-container {
+      margin-top: 30px;
+    }
+
+    #summarize-paragraph {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 10px;
+      border-width: 0px;
+      margin-top: 10px;
+      min-height: 30px;
+      width: 50%;
+      box-sizing: border-box;
+      display: block;
+      margin: 10px auto; /* Center the Summarize button */
+      text-align: center;
+    }
+
+    #summary-display {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      min-height: 50px; /* Ensure it has some height even if empty */
+      width: 100%;
+      box-sizing: border-box; /* Ensure padding doesn't affect width */
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%; /* Make the button full width */
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo Container -->
+  <div class="logo-container">
+    <img src="logo.png" alt="Logo">
+  </div>
+
+  <h2>Custom Styling</h2>
+
+  <div class="toggle-label">
+    <span>Hide Images</span>
+    <label class="switch">
+      <input type="checkbox" id="toggle-images">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="slider-container">
+    <span>Font Size</span>
+    <input type="range" id="font-size-slider" min="10" max="40" value="16">
+  </div>
+
+  <div class="slider-container">
+    <span>Line Spacing</span>
+    <input type="range" id="line-spacing-slider" min="1" max="3" step="0.1" value="1.5">
+  </div>
+
+  <div class="slider-container">
+    <span>Font Family</span>
+    <select id="font-family-selector">
+      <option value="default">Default</option>
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="'Times New Roman', serif">Times New Roman</option>
+      <option value="'Courier New', monospace">Courier New</option>
+      <option value="'Georgia', serif">Georgia</option>
+    </select>
+  </div>
+
+  <div class="summary-title">
+    <h3>Summarize Current Paragraph</h3>
+    <button id="summarize-paragraph">Summarize</button>
+  </div>
+  
+  <div class="summary-container">
+    <h3>Summary:</h3>
+    <p id="summary-display">Click the button to see the summary...</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

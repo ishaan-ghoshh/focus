@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "FOCUS",
+  "version": "1.0",
+  "description": "Automatically adjusts website text to be more ADHD-friendly.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "logo.png",
+    "default_title": "Focus - ADHD-Friendly Text Adjuster"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["webgazer.js", "logo.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js", "webgazer.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
