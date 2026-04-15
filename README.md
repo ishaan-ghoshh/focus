@@ -1,0 +1,1 @@
+Open-source Chrome extension to help neurodivergent students navigating virtual texts; uses eye-tracking (webgazer.js) to see where eye position on a webpage and guide the reader through the text; other features include customizable fonts, sizes, toggle for distractions (images, bright colors, etc.)
